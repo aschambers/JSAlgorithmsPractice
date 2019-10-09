@@ -35,8 +35,6 @@ const sortNumbers = (a, b) => {
 }
 
 const outputParentChild = (array) => {
-  const parentArray = [];
-  const oneParentArray = [];
   const map = {};
 
   for (let i = 0; i < array.length; i++) {
@@ -47,6 +45,8 @@ const outputParentChild = (array) => {
     }
   }
 
+  const parentArray = [];
+  const oneParentArray = [];
   for (let j = 0; j < array.length; j++) {
     if (!map[array[j][0]]) {
        parentArray.push(array[j][0]);
