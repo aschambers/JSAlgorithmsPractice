@@ -49,7 +49,7 @@ const lengthOfLongestSubstringPartOne = (s) => {
  * @param {string} s
  * @return {number}
  */
-const lengthOfLongestSubstring = (s) => {
+const lengthOfLongestSubstringPartTwo = (s) => {
   const arr = s.split('');
   const map = {};
   let start = 0;
@@ -67,6 +67,32 @@ const lengthOfLongestSubstring = (s) => {
     }
 
     map[arr[i]] = i;
+  }
+
+  return maxLength;
+}
+
+// console.log('longest substring length: ' + lengthOfLongestSubstringPartTwo("abcabcbb"));
+
+/**
+ * Find the length of the longest substring
+ * @param {string} s
+ * @return {number}
+ */
+const lengthOfLongestSubstring = (string) => {
+  const found = {};
+  let maxLength = 0;
+  let start = 0;
+
+  for (let i = 0; i < string.length; i++) {
+    let end = i + 1;
+    if (found[string[i]] !== undefined) {
+      start = Math.max(start, found[string[i]]);
+    }
+
+    maxLength = Math.max(maxLength, end - start);
+
+    found[string[i]] = end;
   }
 
   return maxLength;
