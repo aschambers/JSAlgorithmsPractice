@@ -6,7 +6,7 @@
  * @param {number} start
  * @param {number} end
  */
-const quickSort = (arr, start, end) => {
+const quickSort = (arr, start = 0, end = arr.length - 1) => {
   if (start < end) {
     let swapIndex = pivot(arr, start, end);
    
@@ -48,4 +48,4 @@ const swap = (arr, i, j) => {
   arr[j] = temp;
 }
 
-console.log(quickSort([11,8,14,3,6,2,1, 7],0,7));
+console.log(quickSort([11,8,-3,14,3,-5,6,22,2,1,7]));
