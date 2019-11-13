@@ -3,7 +3,7 @@
  * which takes a starting index and puts
  * all elements lower then the starting
  * index value, on the left side
- * @param {arr} arr 
+ * @param {array} arr 
  * @param {number} start 
  */
 const pivot = (arr, start) => {
@@ -26,7 +26,7 @@ const pivot = (arr, start) => {
 /**
  * helper function used to swap 
  * elements in an array
- * @param {arr} arr 
+ * @param {array} arr 
  * @param {number} i 
  * @param {number} j 
  */
