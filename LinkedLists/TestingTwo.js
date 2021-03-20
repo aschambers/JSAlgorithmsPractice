@@ -42,8 +42,18 @@ const printListRecursive = (list) => {
   printListRecursive(list.next);
 }
 
-const insertAt = (list, value, position) => {
-	if ((position > 0 && position > list.size) || position < 0) {
+const size = (list) => {
+  let count = 0; 
+  let node = list;
+  while (node) {
+    count++;
+    node = node.next
+  }
+  return count;
+}
+
+const insertAt = (list, size, value, position) => {
+	if ((position > 0 && position > size) || position < 0) {
     return list;
   } else {
     let node = createNode(value);
@@ -65,13 +75,33 @@ const insertAt = (list, value, position) => {
 
 			node.next = curr;
 			prev.next = node;
-		} 
-		list.size++;
+		}
 	}
 
   return list;
 }
 
-const newList = insertAt(one, 55, 3);
-printList(newList);
+const newList = insertAt(one, size(one), 55, 1);
+
+const insertAtBeginning = (list, value) => {
+  let node = createNode(value);
+  node.next = list;
+  return node;
+}
+
+const nextList = insertAtBeginning(newList, 42);
+
+const insertAtEnd = (list, value) => {
+  let node = createNode(value);
+
+  let current = list;
+  while (current.next !== null) {
+    current = current.next;
+  }
+  current.next = node;
+
+  return list;
+}
+
+console.log(insertAtEnd(nextList, 23));
 
