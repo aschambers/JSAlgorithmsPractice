@@ -1,6 +1,6 @@
 class ListNode {
-  constructor(data) {
-      this.data = data
+  constructor(val) {
+      this.val = val
       this.next = null                
   }
 }
@@ -46,10 +46,10 @@ const sumOfConcatLinkedList = (list) => {
 
   if (listSize > 0) {
     let node = list.head;
-    sum += node.data;
+    sum += node.val;
     for (let i = 1; i < listSize; i++) {
       node = node.next;
-      sum += String(node.data).padEnd((listSize-1) * '0');
+      sum += String(node.val).padEnd((listSize-1) * '0');
     }
   }
 
@@ -74,3 +74,87 @@ const addTwoNumbers = (l1, l2) => {
 };
 
 console.log(addTwoNumbers(list, listTwo));
+
+
+
+
+// second solution using functions
+const createNode = (value) => {
+  return {
+    value: value,
+    next: null
+  }
+}
+
+const list1 = createNode(2);
+const list1two = createNode(4);
+const list1three = createNode(3);
+list1.next = list1two;
+list1two.next = list1three;
+
+const list2 = createNode(5);
+const list2two = createNode(6);
+const list2three = createNode(4);
+list2.next = list2two;
+list2two.next = list2three;
+
+const addTwoNumbersTwo = function(l1, l2) {
+  let node = null;
+  const carry = arguments[2];
+  if (l1 || l2) {
+    const val1 = l1 ? l1.value : 0;
+    const val2 = l2 ? l2.value : 0;
+    const next1 = l1 ? l1.next : null;
+    const next2 = l2 ? l2.next : null;
+    const val = carry ? val1 + val2 + 1 : val1 + val2;
+    node = createNode(val % 10);
+    node.next = addTwoNumbersTwo(next1, next2, val >= 10);  
+  } else if (carry) {
+    node = createNode(1);
+    node.next = null;
+  }
+  return node;
+};
+
+console.log(addTwoNumbersTwo(list1, list2));
+
+
+
+
+// third solution using classes
+const nodeL1 = new ListNode(2);
+const nodeL1two = new ListNode(4);
+const nodeL1three = new ListNode(3);
+nodeL1.next = nodeL1two;
+nodeL1two.next = nodeL1three;
+
+const nodeL2 = new ListNode(5);
+const nodeL2two = new ListNode(6);
+const nodeL2three = new ListNode(4);
+nodeL2.next = nodeL2two;
+nodeL2two.next = nodeL2three;
+
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+const addTwoNumbersThree = function(l1, l2) {
+  let node = null;
+  const carry = arguments[2];
+  if (l1 || l2) {
+    const val1 = l1 ? l1.val : 0;
+    const val2 = l2 ? l2.val : 0;
+    const next1 = l1 ? l1.next : null;
+    const next2 = l2 ? l2.next : null;
+    const val = carry ? val1 + val2 + 1 : val1 + val2;
+    node = new ListNode(val % 10);
+    node.next = addTwoNumbersThree(next1, next2, val >= 10);
+  } else if (carry) {
+    node = new ListNode(1);
+    node.next = null;
+  }
+  return node;
+};
+
+console.log(addTwoNumbersThree(nodeL1, nodeL2));

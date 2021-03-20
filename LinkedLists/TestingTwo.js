@@ -32,25 +32,46 @@ function printList(list) {
   }
 }
 
-printList(one);
-printList(list);
-
-// recursive
 const printListRecursive = (list) => {
-  // If this node exists, print it out
   if (list) {
     console.log(list.value)
   } else {
-    // Hit the end? Stop here.
     return;
   }
 
-  // Do it again for the next one
-  // (eventually, list.next will be null)
   printListRecursive(list.next);
 }
 
-printListRecursive(two);
+const insertAt = (list, value, position) => {
+	if ((position > 0 && position > list.size) || position < 0) {
+    return list;
+  } else {
+    let node = createNode(value);
+		let curr, prev;
 
+		curr = list;
 
+		if (position == 0) {
+			node.next = list;
+			list = node;
+		} else {
+			let index = 0;
+
+			while (index < position) {
+				index++;
+				prev = curr;
+				curr = curr.next;
+			}
+
+			node.next = curr;
+			prev.next = node;
+		} 
+		list.size++;
+	}
+
+  return list;
+}
+
+const newList = insertAt(one, 55, 3);
+printList(newList);
 
