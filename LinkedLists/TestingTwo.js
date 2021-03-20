@@ -103,5 +103,22 @@ const insertAtEnd = (list, value) => {
   return list;
 }
 
-console.log(insertAtEnd(nextList, 23));
+const getValueAtIndex = (list, index) => {
+  let value = null;
+  let current = list;
+  
+  if (index > size(list) || index < 0 || size(list) < 1) return value;
 
+  for (let i = 0; i < size(list); i++) {
+    if (i === index) {
+      value = current.value;
+      break;
+    } else {
+      current = current.next;
+    }
+  }
+
+  return value;
+}
+
+console.log(getValueAtIndex(nextList, 2));
