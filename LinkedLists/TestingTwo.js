@@ -52,8 +52,8 @@ const size = (list) => {
   return count;
 }
 
-const insertAt = (list, size, value, position) => {
-	if ((position > 0 && position > size) || position < 0) {
+const insertAt = (list, value, position) => {
+	if ((position > 0 && position > size(list)) || position < 0) {
     return list;
   } else {
     let node = createNode(value);
@@ -103,14 +103,14 @@ const insertAtEnd = (list, value) => {
   return list;
 }
 
-const getValueAtIndex = (list, index) => {
+const getValueAtIndex = (list, position) => {
   let value = null;
   let current = list;
   
-  if (index > size(list) || index < 0 || size(list) < 1) return value;
+  if (position > size(list) || position < 0 || size(list) < 1) return value;
 
   for (let i = 0; i < size(list); i++) {
-    if (i === index) {
+    if (i === position) {
       value = current.value;
       break;
     } else {
@@ -132,19 +132,40 @@ const deleteList = deleteAtBeginning(nextList);
 const deleteAtEnd = (list) => {
   if (size(list) < 1 || list.next === null) return null;
 
-  let previous = list;
-  let tail = list.next;
+  let previousNode = list;
+  let currentNode = list.next;
 
   for (let i = 0; i < size(list); i++) {
-    if (tail.next !== null) {
-      previous = tail;
-      tail = tail.next;
+    if (currentNode.next !== null) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
     }
   }
 
-  previous.next = null;
+  previousNode.next = null;
 
   return list;
 }
 
-console.log(deleteAtEnd(deleteList));
+const deleteAt = (list, position) => {
+  if (position < 0 || size(list) < 1) return list;
+  if (position >= size(list)) return list;
+  if (position === 0) return list.next;
+  
+  let previousNode = list;
+  let currentNode = list.next;
+
+  for (let i = 1; i < size(list); i++) {
+    if (position === i) {
+      previousNode.next = currentNode.next;
+      break;
+    }
+
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+  }
+
+  return list;
+}
+
+console.log(deleteAt(deleteList, 1));
