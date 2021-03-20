@@ -121,4 +121,30 @@ const getValueAtIndex = (list, index) => {
   return value;
 }
 
-console.log(getValueAtIndex(nextList, 2));
+const deleteAtBeginning = (list) => {
+  if (size(list) < 1) return null;
+  
+  return list.next;
+}
+
+const deleteList = deleteAtBeginning(nextList);
+
+const deleteAtEnd = (list) => {
+  if (size(list) < 1 || list.next === null) return null;
+
+  let previous = list;
+  let tail = list.next;
+
+  for (let i = 0; i < size(list); i++) {
+    if (tail.next !== null) {
+      previous = tail;
+      tail = tail.next;
+    }
+  }
+
+  previous.next = null;
+
+  return list;
+}
+
+console.log(deleteAtEnd(deleteList));
