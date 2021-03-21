@@ -1,14 +1,15 @@
-const DoublyLinkedList = require('../Helpers/DoublyLinkedList');
+const LinkedList = require('../Helpers/LinkedList');
 const insertAtEnd = require('../Helpers/InsertAtEnd');
+const insertAtBeginning = require('../Helpers/InsertAtBeginning');
 const printList = require('../Helpers/PrintList');
 
-let list = new DoublyLinkedList();
+let list = new LinkedList();
 
-insertAtEnd(list, 7);
+insertAtEnd(list, 5);
 insertAtEnd(list, 1);
-insertAtEnd(list, 23);
+insertAtBeginning(list, 7);
+insertAtEnd(list, 6);
 insertAtEnd(list, 3);
-insertAtEnd(list, 14);
 
 const bubbleSort = (list) => {
   if (list.length < 1) return null;
