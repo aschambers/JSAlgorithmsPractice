@@ -28,18 +28,16 @@ const linkedList = () => {
 
 class ListNode {
   constructor(data) {
-      this.data = data
-      this.next = null                
+    this.data = data
+    this.next = null                
   }
 }
 
 class LinkedList {
   constructor(head = null) {
-      this.head = head
+    this.head = head
   }
 }
-
-// console.log(new ListNode(linkedList()));
 
 let node1 = new ListNode(2);
 let node2 = new ListNode(5);
@@ -49,11 +47,7 @@ node1.next = node2;
 node2.next = node3;
 node3.next = node4;
 
-// console.log(node1);
-
 let list = new LinkedList(node1);
-// console.log(list);
-// console.log(list.head.next.data);
 
 /**
  * size of linked list
@@ -62,8 +56,8 @@ const size = (list) => {
   let count = 0; 
   let node = list.head;
   while (node) {
-      count++;
-      node = node.next
+    count++;
+    node = node.next
   }
   return count;
 }
@@ -85,9 +79,9 @@ console.log(getFirst(list));
 const getLast = (list) => {
   let lastNode = list.head;
   if (lastNode) {
-      while (lastNode.next) {
-          lastNode = lastNode.next
-      }
+    while (lastNode.next) {
+      lastNode = lastNode.next
+    }
   }
   return lastNode
 }

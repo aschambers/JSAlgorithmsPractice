@@ -1,28 +1,14 @@
-const createNode = (value) => {
-  return {
-    value: value,
-    next: null
-  }
-}
+const ListNode = require('../Helpers/ListNode');
+const size = require('../Helpers/Size');
+const printList = require('../Helpers/PrintList');
 
-let one = createNode(1);
-let two = createNode(23);
-let three = createNode(3);
-let four = createNode(14);
-
-one.next = two;
-two.next = three;
-three.next = four;
-
-const size = (list) => {
-  let count = 0; 
-  let node = list;
-  while (node) {
-    count++;
-    node = node.next
-  }
-  return count;
-}
+let node1 = new ListNode(1);
+let node2 = new ListNode(23);
+let node3 = new ListNode(3);
+let node4 = new ListNode(14);
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
 
 const bubbleSort = (list) => {
   if (size(list) < 1) return null;
@@ -50,5 +36,5 @@ const bubbleSort = (list) => {
   return list;
 }
 
-const bubbleSortResult = bubbleSort(one);
-console.log(bubbleSortResult);
+const bubbleSortResult = bubbleSort(node1);
+printList(bubbleSortResult);
