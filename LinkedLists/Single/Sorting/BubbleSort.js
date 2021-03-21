@@ -2,14 +2,19 @@ const LinkedList = require('../Helpers/LinkedList');
 const insertAtEnd = require('../Helpers/InsertAtEnd');
 const insertAtBeginning = require('../Helpers/InsertAtBeginning');
 const printList = require('../Helpers/PrintList');
+const deleteAtBeginning = require('../Helpers/DeleteAtBeginning');
+const deleteAtEnd = require('../Helpers/DeleteAtEnd');
 
 let list = new LinkedList();
 
 insertAtEnd(list, 5);
 insertAtEnd(list, 1);
 insertAtBeginning(list, 7);
+insertAtBeginning(list, 9);
 insertAtEnd(list, 6);
 insertAtEnd(list, 3);
+deleteAtBeginning(list);
+deleteAtEnd(list);
 
 const bubbleSort = (list) => {
   if (list.length < 1) return null;
